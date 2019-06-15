@@ -102,13 +102,15 @@ public:
 	}
 	double Vt(int t)
 	{
-		double Vv = 0, L = 10;
-
-		Vv += Mt(Vt(t-1))*t;
-
+		if (t = 0)
+		{
+			Vv = V[0];
+		}
+		else
+		{ 
+			Vv = V(t - 1) + Mt(Vt(t - 1))*t / L;
+		}
 		return Vv;
-
-
 
 	}
 
