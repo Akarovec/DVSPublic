@@ -1,7 +1,8 @@
-﻿#include <iostream>
+﻿#include "pch.h"
+#include <iostream>
 #include <string>
 #include <fstream>
-#include "pch.h"
+
 
 using namespace std;
 
@@ -56,7 +57,7 @@ public:
 		Hm = 0.01, Hv = 0001, C = 0.1, Ts = 0, Td = 0, Tmax = 110 + 273;
 	double KFk(double x1, double x2, double y1, double y2)
 	{
-		double k, b;
+		double k;
 		k = (y1 - y2) / (x1 - x2);
 
 
@@ -102,13 +103,14 @@ public:
 	}
 	double Vt(int t)
 	{
+		double Vv = 0, L = 10;
 		if (t = 0)
 		{
 			Vv = V[0];
 		}
 		else
 		{ 
-			Vv = V(t - 1) + Mt(Vt(t - 1))*t / L;
+			Vv = Vt(t - 1) + Mt(Vt(t - 1))*t / L;
 		}
 		return Vv;
 
